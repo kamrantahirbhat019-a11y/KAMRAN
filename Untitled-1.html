@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Motion Creative Studio</title>
+
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+<style>
+
+/* ===== BACKGROUND ===== */
+body{
+margin:0;
+font-family:Segoe UI;
+color:white;
+overflow-x:hidden;
+
+background:
+radial-gradient(circle at 20% 30%, rgba(0,255,213,0.15), transparent 40%),
+radial-gradient(circle at 80% 70%, rgba(100,100,255,0.15), transparent 40%),
+linear-gradient(135deg, #050505, #0a0f1f, #050505);
+}
+
+/* NOISE */
+body::after{
+content:'';
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:url('https://www.transparenttextures.com/patterns/noise.png');
+opacity:0.05;
+z-index:-1;
+}
+
+/* GLOW */
+.glow-bg{
+position:fixed;
+width:500px;
+height:500px;
+background:radial-gradient(circle,#00ffd5,transparent 70%);
+filter:blur(120px);
+opacity:0.15;
+top:20%;
+left:10%;
+z-index:-1;
+}
+
+/* ===== HEADER (FIXED PREMIUM BOX) ===== */
+.header{
+text-align:center;
+padding:25px 20px;
+margin:20px auto;
+width:90%;
+max-width:900px;
+
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,0.1);
+border-radius:16px;
+box-shadow:0 0 30px rgba(0,255,213,0.1);
+transition:0.3s;
+}
+
+.header:hover{
+box-shadow:0 0 40px rgba(0,255,213,0.3);
+transform:translateY(-3px);
+}
+
+.logo{width:60px;}
+
+/* NAV */
+.nav{
+display:flex;
+justify-content:center;
+gap:12px;
+padding:12px;
+margin-top:10px;
+
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+border-radius:12px;
+border:1px solid rgba(255,255,255,0.1);
+}
+
+.nav a{
+background:#fff;
+color:#000;
+padding:8px 16px;
+border-radius:8px;
+text-decoration:none;
+transition:0.3s;
+}
+.nav a:hover{
+background:#00ffd5;
+transform:translateY(-2px);
+}
+
+/* ===== HERO ===== */
+.hero{
+position:relative;
+width:90%;
+max-width:950px;
+height:500px;
+margin:50px auto;
+border-radius:20px;
+overflow:hidden;
+perspective:1000px;
+}
+
+.hero-inner{
+width:100%;
+height:100%;
+transition:0.2s;
+}
+
+.hero img{
+width:100%;
+height:100%;
+object-fit:cover;
+filter:brightness(0.6);
+}
+
+.hero-text{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+text-align:center;
+}
+
+.btn{
+background:#00ffd5;
+padding:10px 22px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+margin:6px;
+transition:0.3s;
+}
+.btn:hover{
+transform:scale(1.05);
+box-shadow:0 0 15px #00ffd5;
+}
+
+/* PARALLAX */
+.parallax{
+opacity:0;
+transform:translateY(40px);
+transition:1s;
+}
+.parallax.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* ABOUT */
+.about{
+max-width:800px;
+margin:auto;
+padding:40px 20px;
+color:#aaa;
+}
+
+/* SERVICES */
+section{text-align:center;padding:70px 20px;}
+
+.box{
+display:inline-block;
+width:200px;
+padding:20px;
+margin:10px;
+background:#0a0a0a;
+border-radius:10px;
+border:1px solid #222;
+transition:0.3s;
+}
+.box:hover{
+transform:translateY(-8px);
+box-shadow:0 0 20px #00ffd5;
+}
+
+/* PORTFOLIO */
+.portfolio{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+max-width:1000px;
+margin:auto;
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+border-radius:12px;
+transition:0.4s;
+}
+.card:hover img{
+transform:scale(1.1);
+}
+
+/* CALENDLY */
+.modal{
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:rgba(0,0,0,0.9);
+display:none;
+justify-content:center;
+align-items:center;
+}
+.modal.active{display:flex;}
+
+.calendly-box{
+width:90%;
+max-width:900px;
+height:80%;
+background:#111;
+border-radius:16px;
+overflow:hidden;
+position:relative;
+}
+
+.close{
+position:absolute;
+top:10px;
+right:15px;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="glow-bg"></div>
+
+<!-- HEADER -->
+<header class="header">
+<img src="img/bat.png.png" class="logo" alt="logo">
+<h3>MOTION CREATIVE STUDIO</h3>
+
+<div class="nav">
+<a href="#">Home</a>
+<a href="#services">Services</a>
+<a href="#portfolio">Portfolio</a>
+</div>
+</header>
+
+<!-- HERO -->
+<div class="hero" id="hero">
+<div class="hero-inner" id="tilt">
+
+<img src="img/Untitled-1_03.png" alt="hero">
+
+<div class="hero-text">
+<h1>Professional Video Editing And CGI</h1>
+
+<a href="https://www.artstation.com/kamranbhat" target="_blank" class="btn">
+Portfolio
+</a>
+
+<button class="btn" onclick="openCalendly()">Start Project</button>
+</div>
+
+</div>
+</div>
+
+<!-- ABOUT -->
+<div class="about parallax">
+<h2>ABOUT US</h2>
+<p>We create high-end cinematic visuals and edits with premium storytelling.</p>
+</div>
+
+<!-- SERVICES -->
+<section id="services" class="parallax">
+<h2>Services</h2>
+<div class="box">Editing</div>
+<div class="box">Motion Graphics</div>
+<div class="box">Animation</div>
+<div class="box">VFX</div>
+<div class="box">CGI</div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio" class="parallax">
+<h2><a href="img/Untitled-1_03.png">CONTENT</a></h2>
+<div class="portfolio">
+  <div class="card"><img src="img/pic 1.webp" alt=""></div>
+  <div class="card"><img src="img/WhatsApp Image 2026-03-17 at 4.02.44 PM.jpeg" alt=""></div>
+  <div class="card"><img src="img/WhatsApp Image 2026-03-17 at 4.08.44 PM.jpeg" alt=""></div>
+</div>
+
+</section>
+
+<!-- CTA -->
+<section class="parallax">
+<h2>Click below to talk with us</h2>
+<button class="btn" onclick="openCalendly()">Let’s Start</button>
+</section>
+
+<!-- CALENDLY -->
+<div id="calendlyModal" class="modal">
+<div class="calendly-box">
+
+<div class="close" onclick="closeCalendly()">✖</div>
+
+<div class="calendly-inline-widget"
+data-url="https://calendly.com/kamrantahirbhat019/30min"
+style="height:100%;">
+</div>
+
+</div>
+</div>
+
+<script>
+
+/* 3D TILT */
+const hero=document.getElementById("hero");
+const tilt=document.getElementById("tilt");
+
+hero.addEventListener("mousemove",(e)=>{
+let x=e.offsetX;
+let y=e.offsetY;
+
+let rotateY=(x/hero.offsetWidth - 0.5)*10;
+let rotateX=(y/hero.offsetHeight - 0.5)*-10;
+
+tilt.style.transform=`rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+});
+
+hero.addEventListener("mouseleave",()=>{
+tilt.style.transform="rotateX(0) rotateY(0)";
+});
+
+/* PARALLAX */
+window.addEventListener("scroll",()=>{
+document.querySelectorAll(".parallax").forEach(el=>{
+if(el.getBoundingClientRect().top < window.innerHeight - 100){
+el.classList.add("show");
+}
+});
+});
+
+/* CALENDLY */
+function openCalendly(){
+document.getElementById("calendlyModal").classList.add("active");
+}
+
+function closeCalendly(){
+document.getElementById("calendlyModal").classList.remove("active");
+}
+
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Footer</title>
+
+<!-- Font Awesome (icons without images) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #0b0f1a;
+}
+
+/* FOOTER */
+.footer {
+    background: #0a0a0a;
+    color: #fff;
+    padding: 60px 20px 20px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: auto;
+    gap: 30px;
+}
+
+.footer-box {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-box h2,
+.footer-box h3 {
+    margin-bottom: 15px;
+}
+
+.footer-box p {
+    color: #aaa;
+    line-height: 1.6;
+}
+
+.footer-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-box ul li {
+    margin-bottom: 10px;
+}
+
+.footer-box ul li a {
+    color: #aaa;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-box ul li a:hover {
+    color: #00ffd5;
+}
+
+/* SOCIAL ICONS */
+.social-icons a {
+    display: inline-block;
+    margin-right: 12px;
+    font-size: 20px;
+    color: #fff;
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    color: #00ffd5;
+    transform: scale(1.2);
+}
+
+/* BOTTOM */
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    border-top: 1px solid #222;
+    padding-top: 15px;
+    color: #777;
+    font-size: 14px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Your Website Content Above -->
+
+<footer class="footer">
+    <div class="footer-container">
+
+        <!-- Brand -->
+        <div class="footer-box">
+            <h2>MOTION CREATIVE STUDIO</h2>
+            <p>We create stunning visuals, CGI And animations to elevate your brand.</p>
+        </div>
+
+        <!-- Links -->
+        <div class="footer-box">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Portfolio</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- Social -->
+        <div class="footer-box">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 Motion Creative Studio | All Rights Reserved</p>
+    </div>
+</footer>
+
+</body>
+</html>
